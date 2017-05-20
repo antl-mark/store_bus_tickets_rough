@@ -1,2 +1,0 @@
-Список комітів:
-1. Login, registration, reconciliation with database
