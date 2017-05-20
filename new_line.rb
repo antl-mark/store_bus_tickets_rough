@@ -1,6 +1,5 @@
 
 class NewLine
-
   def create_new_line
     description = {}
 
@@ -35,11 +34,7 @@ class NewLine
     end
 
     data_base = WorkWithDb.new
-    data_base.new_entry(description, "buses") if user_choice == 'yes'
+    data_base.new_entry(description, 'buses') if user_choice == 'yes'
     puts 'The new bus line - created!'
-
-
   end
-
-
 end
