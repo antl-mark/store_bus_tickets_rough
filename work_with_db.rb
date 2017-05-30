@@ -1,6 +1,5 @@
 class WorkWithDb
   attr_reader :database_file
-
   def initialize
     @database_file = 'store_bus_tickets_rough.sqlite'
   end
