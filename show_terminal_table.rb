@@ -5,11 +5,8 @@ class ShowTerminalTable
     @new_table = CreateTerminalTable.new
   end
 
-  def show_table(name_of_table, profit, title_of_table, column)
+  def show_table(name_of_table, title_of_table, column, profit = nil)
     @data_of_buses = @data_base.info_from_db(name_of_table, profit)
     @new_table.tr_table(title_of_table, column, @data_of_buses)
-  end
-
-  def data_from_db
   end
 end

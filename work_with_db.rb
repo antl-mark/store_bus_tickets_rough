@@ -14,7 +14,7 @@ class WorkWithDb
     insert_row_id
   end
 
-  def info_from_db(table, sorting)
+  def info_from_db(table, sorting = nil)
     database = SQLite3::Database.open(database_file)
     database.results_as_hash = true
     if sorting == 'non-profit'
@@ -24,7 +24,6 @@ class WorkWithDb
     else
       request = "SELECT rowid, * FROM #{table} ORDER by rowid ASC"
     end
-
     statement = database.prepare(request)
     result = statement.execute!
     statement.close

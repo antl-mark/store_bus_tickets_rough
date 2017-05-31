@@ -1,4 +1,3 @@
-
 class Admin
   include Communication
   def initialize
@@ -11,7 +10,7 @@ class Admin
     case @user_choice
     when 1
       bus_list_table = ShowTerminalTable.new
-      bus_list_table.show_table('buses', '', 'Bus routs list', @column)
+      bus_list_table.show_table('buses', 'Bus routs list', @column)
     when 2
       new_bus_line = NewLine.new
       new_bus_line.create_new_line
