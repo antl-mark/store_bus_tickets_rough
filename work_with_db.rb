@@ -31,10 +31,10 @@ class WorkWithDb
     result
   end
 
-  def refresh(table, id, departure_time, arrival_time)
+  def refresh(table, id, departure_time, arrival_time, available_seats)
     database = SQLite3::Database.open(database_file)
     database.results_as_hash = true
-    request = "UPDATE #{table} SET departure_time = \"#{departure_time}\", arrival_time = \"#{arrival_time}\" WHERE rowid == #{id}"
+    request = "UPDATE #{table} SET departure_time = \"#{departure_time}\", arrival_time = \"#{arrival_time}\", available_seats = \"#{available_seats}\" WHERE rowid == #{id}"
     statement = database.prepare(request)
     result = statement.execute!
     statement.close

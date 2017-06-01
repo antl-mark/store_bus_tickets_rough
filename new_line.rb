@@ -1,7 +1,10 @@
 class NewLine
   include Communication
+  include ValidationInput::Choice
   def initialize
     @description = {}
+    @data_base = WorkWithDb.new
+    @new_table = CreateTerminalTable.new
   end
 
   def create_new_line
@@ -11,15 +14,9 @@ class NewLine
     @description[:arrival_time] = enter_data('Enter the date and time of arrival (in format - DD.MM.YYYY h:m)')
     @description[:number_of_seats] = enter_data('Enter the maximum number of seats')
     @description[:available_seats] = @description[:number_of_seats]
-    puts 'The new bus line created:'
-    new_table = CreateTerminalTable.new
-    new_table.tr_table("New bus rout: #{@description[:departure_city].capitalize} - #{@description[:arrival_city].capitalize}", @description.keys, [@description.values])
-    user_choice = enter_data('Save this bus line? Please enter Yes/No').downcase
-    while user_choice != 'yes' && user_choice != 'no'
-      user_choice = enter_data('Please enter Yes/No').downcase
-    end
-    data_base = WorkWithDb.new
-    data_base.new_entry(description, 'buses') if user_choice == 'yes'
+    @new_table.tr_table("New bus rout: #{@description[:departure_city].capitalize} - #{@description[:arrival_city].capitalize}", @description.keys, [@description.values])
+    user_confir = confirmation('Save this bus line? Please enter Yes/No')
+    @data_base.new_entry(@description, 'buses') if user_confir == 'yes'
     puts 'The new bus line - created!'
   end
 end

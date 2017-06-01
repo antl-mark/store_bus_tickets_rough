@@ -7,7 +7,7 @@ class Customer
     @city = {}
   end
 
-  def customer_opportunities
+  def customer_opportunities(user_name)
     case @user_choice
     when 1
       @city[:departure_city] = enter_data("Enter the departure city which interests you\n" \
@@ -20,7 +20,7 @@ class Customer
       end
     when 2
       ticket = BuyTickets.new
-      ticket.buy_tickets(@column)
+      ticket.buy_tickets(@column, user_name)
     when 3
       puts 'todo...'
     when 4

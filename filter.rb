@@ -5,8 +5,8 @@ class Filter
     @array_of_key = %i[id departure_city arrival_city departure_time arrival_time number_of_seats available_seats]
   end
 
-  def make_hash_id_to_row(array_row_of_bases_table)
-    array_row_of_bases_table.each_with_index do |row, _i|
+  def make_hash_id_to_row(array_row)
+    array_row.each_with_index do |row, _i|
       @array_row << Hash[@array_of_key.zip(row)]
     end
     @array_row.each do |elem|

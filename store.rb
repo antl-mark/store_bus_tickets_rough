@@ -20,6 +20,6 @@ else
     current_user.admin_opportunities
   else
     current_user = Customer.new
-    current_user.customer_opportunities
+    current_user.customer_opportunities(verified_user[:name])
   end
 end
